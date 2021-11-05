@@ -93,14 +93,14 @@
 
 - name: Modify Systemd K3s Service to add cluster ini
   lineinfile:
-    dest: /etc/systemd/system/k3s
+    dest: /etc/systemd/system/k3s.service
     regexp: ExecStart=/usr/local/bin/k3s server {{ extra_server_args | default("") }}
     line: ExecStart=/usr/local/bin/k3s server --cluster-init {{ extra_server_args | default("") }}
   when: "inventory_hostname == groups['master'][0]"
 
 - name: Modify Systemd K3s Service to join master1
   lineinfile:
-    dest: /etc/systemd/system/k3s
+    dest: /etc/systemd/system/k3s.service
     regexp: ExecStart=/usr/local/bin/k3s server {{ extra_server_args | default("") }}
     line: ExecStart=/usr/local/bin/k3s server {{ extra_server_args | default("") }} --server https://{{ master_ip }}:6443 --token {{ hostvars[groups['master'][0]]['token'] }}
   when: "inventory_hostname != groups['master'][0]"

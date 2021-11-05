@@ -1,0 +1,14 @@
+---
+- hosts: worker
+  vars:
+    - k3s_version: v1.21.1+k3s1
+    - ansible_user: root
+    - systemd_dir: /etc/systemd/system
+    - master_ip: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
+    - extra_agent_args: "--snapshotter=native"
+    - master_token: "K10f406ae874ff4b93d8613779dd240e4655c4b9ab6a5c0e255986755a0d1048813::server:3c0808b9b55f10b96c2a6dbeb3482633"
+  become: yes
+  roles:
+    - role: prereq
+    - role: download
+    - role: k3s/worker

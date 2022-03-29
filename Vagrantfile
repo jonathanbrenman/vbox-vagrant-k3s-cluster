@@ -1,10 +1,10 @@
 servers = [
-  { :hostname => "master01", :ip => "192.168.33.10", :memory => "2048", :disks => "15G" },
-  { :hostname => "master02", :ip => "192.168.33.11", :memory => "2048", :disks => "15G" },
-  { :hostname => "master03", :ip => "192.168.33.12", :memory => "2048", :disks => "15G" },
-  { :hostname => "node01", :ip => "192.168.33.13", :memory => "2048", :disks => "15G" },
-  { :hostname => "node02", :ip => "192.168.33.14", :memory => "2048", :disks => "15G" },
-  { :hostname => "node03", :ip => "192.168.33.15", :memory => "2048", :disks => "15G" },
+  { :hostname => "master01", :ip => "192.168.0.46", :memory => "2048", :disks => "15G" },
+  { :hostname => "master02", :ip => "192.168.0.47", :memory => "2048", :disks => "15G" },
+  { :hostname => "master03", :ip => "192.168.0.48", :memory => "2048", :disks => "15G" },
+  { :hostname => "node01", :ip => "192.168.0.49", :memory => "2048", :disks => "15G" },
+  { :hostname => "node02", :ip => "192.168.0.50", :memory => "2048", :disks => "15G" },
+  { :hostname => "node03", :ip => "192.168.0.51", :memory => "2048", :disks => "15G" },
 ]
 
 Vagrant.configure("2") do |config|
@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
     
     config.vm.define conf[:hostname] do |node|
       node.vm.hostname = conf[:hostname]
-      node.vm.network "private_network", ip: conf[:ip]
+      node.vm.network "public_network", ip: conf[:ip], bridge: "eno1"
       node.vm.provider :virtualbox do |v|
         v.name = conf[:hostname]
         v.memory = conf[:memory]

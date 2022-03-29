@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
     
     config.vm.define conf[:hostname] do |node|
       node.vm.hostname = conf[:hostname]
-      config.vm.network "private_network", ip: conf[:ip]
+      node.vm.network "private_network", ip: conf[:ip]
       node.vm.provider :virtualbox do |v|
         v.name = conf[:hostname]
         v.memory = conf[:memory]

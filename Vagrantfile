@@ -1,7 +1,7 @@
 servers = [
-  { :hostname => "master01", :ip => "192.168.0.46", :memory => "2048", :disks => "15G" },
-  { :hostname => "master02", :ip => "192.168.0.47", :memory => "2048", :disks => "15G" },
-  { :hostname => "master03", :ip => "192.168.0.48", :memory => "2048", :disks => "15G" },
+  { :hostname => "master01", :ip => "192.168.0.45", :memory => "2048", :disks => "15G" },
+  { :hostname => "master02", :ip => "192.168.0.46", :memory => "2048", :disks => "15G" },
+  { :hostname => "master03", :ip => "192.168.0.47", :memory => "2048", :disks => "15G" },
   { :hostname => "node01", :ip => "192.168.0.49", :memory => "2048", :disks => "15G" },
   { :hostname => "node02", :ip => "192.168.0.50", :memory => "2048", :disks => "15G" },
   { :hostname => "node03", :ip => "192.168.0.51", :memory => "2048", :disks => "15G" },
